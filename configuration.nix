@@ -1,10 +1,30 @@
-{ config, lib, pkgs, unstable, ... }:
+{ config, libs, pkgs, ... }:
 
+let 
+  	unstable = import (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/nixos-unstable) {
+		config = config.nixpkgs.config;
+	};
+  in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  networking.networkmanager.enable = true;
+
   # Set your time zone.
   time.timeZone = "Asia/Yekaterinburg";
   time.hardwareClockInLocalTime = true;
@@ -65,7 +85,6 @@
     description = "tm";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kate
       neovim
       git
       zig
@@ -75,6 +94,7 @@
       nerdfetch
       bat
       kitty
+      telegram-desktop
     #  thunderbird
     ];
   };
@@ -91,15 +111,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     vim
-     nerdfonts
-     xclip
-  ]) ++ (with unstable; [
-     amnezia-vpn
-  ]);
+  environment.systemPackages =  with pkgs; [
+	     wget
+	     vim
+	     nerdfonts
+	     xclip
+	  ];
+  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -113,7 +131,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-# tried Zapret - didn't work
   /*
   services.zapret = {
       enable = true;
@@ -128,7 +145,6 @@
       ];
   };
   */
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

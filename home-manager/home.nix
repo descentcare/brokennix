@@ -5,6 +5,8 @@
     home.homeDirectory = "/home/tm";
 
     home.packages = with pkgs; [
+        viu
+        mpv
         ranger
         fzf
         iotop

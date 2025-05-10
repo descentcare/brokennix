@@ -83,26 +83,6 @@
         description = "tm";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            unzip
-            neovim
-            zig
-            git
-            ripgrep
-            fd
-            tldr
-            nerdfetch
-            bat
-            kitty
-            telegram-desktop
-            yt-dlp
-            youtube-tui
-            brave
-            btop
-            neofetch
-            nerdfonts
-            lazygit
-            zathura
-            tmux
     #  thunderbird
         ];
     };
@@ -128,9 +108,9 @@
     # $ nix search wget
     environment.systemPackages =  with pkgs; [
         wget
-            vim
-            xclip
-            wayclip
+        vim
+        xclip
+        wayclip
     ];
     environment.variables.EDITOR = "nvim";
 

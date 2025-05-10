@@ -11,6 +11,26 @@
         fzf
         iotop
         iftop
+        unzip
+        neovim
+        zig
+        git
+        ripgrep
+        fd
+        tldr
+        nerdfetch
+        bat
+        kitty
+        telegram-desktop
+        yt-dlp
+        youtube-tui
+        brave
+        btop
+        neofetch
+        nerdfonts
+        lazygit
+        zathura
+        tmux
     ];
 
     programs.git = {

@@ -9,6 +9,7 @@ let
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # ./zapret.nix
     ];
 
   # Bootloader.
@@ -52,9 +53,11 @@ let
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
+  # Managed by PLASMA, so doesn't work
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    layout = "us, ru";
+    variant = "qwerty";
+    options = "grp:ctrl_alt_toggle";
   };
 
   # Enable CUPS to print documents.
@@ -86,8 +89,8 @@ let
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       neovim
-      git
       zig
+      git
       ripgrep
       fd
       tldr
@@ -95,6 +98,14 @@ let
       bat
       kitty
       telegram-desktop
+      yt-dlp
+      youtube-tui
+      brave
+      btop
+      neofetch
+      nerdfonts
+      lazygit
+      zathura
     #  thunderbird
     ];
   };
@@ -114,8 +125,8 @@ let
   environment.systemPackages =  with pkgs; [
 	     wget
 	     vim
-	     nerdfonts
 	     xclip
+	     wayclip
 	  ];
   
 
@@ -131,20 +142,36 @@ let
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  /*
+
   services.zapret = {
-      enable = true;
+      enable = false;
       whitelist = [
-      	"youtube.com"
-	"googlevideo.com"
-	"ytimg.com"
 	"youtu.be"
+	"googlevideo.com"
+	"*.googlevideo.com"
+	"youtubei.googleapis.com"
+	"ytimg.com"
+	"*.ytimg.com"
+	"i.ytimg.com"
+	"yt3.ggpht.com"
+	"yt4.ggpht.com"
+	"youtube.com"
+	"www.youtube.com"
+	"*.youtube.com"
+	"youtube"
+	"youtubeembeddedplayer.googleapis.com"
+	"ytimg.l.google.com"
+	"jnn-pa.googleapis.com"
+	"youtube-nocookie.com"
+	"youtube-ui.l.google.com"
+	"yt-video-upload.l.google.com"
+	"wide-youtube.l.google.com"
       ];
       params = [
       "--dpi-desync=disorder2"
       ];
   };
-  */
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

@@ -1,11 +1,5 @@
-{ config, libs, pkgs, ... }:
+{ config, libs, pkgs, inputs, ... }:
 
-let 
-    unstable = import (builtins.fetchTarball
-        https://github.com/nixos/nixpkgs/tarball/nixos-unstable) {
-        config = config.nixpkgs.config;
-    };
-in
 {
     imports =
         [ # Include the results of the hardware scan.
@@ -90,27 +84,27 @@ in
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
             unzip
-                neovim
-                zig
-                git
-                ripgrep
-                fd
-                tldr
-                nerdfetch
-                bat
-                kitty
-                telegram-desktop
-                yt-dlp
-                youtube-tui
-                brave
-                btop
-                neofetch
-                nerdfonts
-                lazygit
-                zathura
-                tmux
+            neovim
+            zig
+            git
+            ripgrep
+            fd
+            tldr
+            nerdfetch
+            bat
+            kitty
+            telegram-desktop
+            yt-dlp
+            youtube-tui
+            brave
+            btop
+            neofetch
+            nerdfonts
+            lazygit
+            zathura
+            tmux
     #  thunderbird
-                ];
+        ];
     };
     /* for unstable
     fonts.packages = with pkgs; [
@@ -158,26 +152,26 @@ in
         enable = false;
         whitelist = [
             "youtu.be"
-                "googlevideo.com"
-                "*.googlevideo.com"
-                "youtubei.googleapis.com"
-                "ytimg.com"
-                "*.ytimg.com"
-                "i.ytimg.com"
-                "yt3.ggpht.com"
-                "yt4.ggpht.com"
-                "youtube.com"
-                "www.youtube.com"
-                "*.youtube.com"
-                "youtube"
-                "youtubeembeddedplayer.googleapis.com"
-                "ytimg.l.google.com"
-                "jnn-pa.googleapis.com"
-                "youtube-nocookie.com"
-                "youtube-ui.l.google.com"
-                "yt-video-upload.l.google.com"
-                "wide-youtube.l.google.com"
-                ];
+            "googlevideo.com"
+            "*.googlevideo.com"
+            "youtubei.googleapis.com"
+            "ytimg.com"
+            "*.ytimg.com"
+            "i.ytimg.com"
+            "yt3.ggpht.com"
+            "yt4.ggpht.com"
+            "youtube.com"
+            "www.youtube.com"
+            "*.youtube.com"
+            "youtube"
+            "youtubeembeddedplayer.googleapis.com"
+            "ytimg.l.google.com"
+            "jnn-pa.googleapis.com"
+            "youtube-nocookie.com"
+            "youtube-ui.l.google.com"
+            "yt-video-upload.l.google.com"
+            "wide-youtube.l.google.com"
+        ];
         params = [
             "--dpi-desync=disorder2"
         ];

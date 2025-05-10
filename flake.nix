@@ -1,7 +1,7 @@
 {
     description = "My NixOS Flake";
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs-24.11";
+        nixpkgs.url = "github:NixOS/nixpkgs";
     };
     outputs = { self, nixpkgs, ... }@inputs: {
         nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {

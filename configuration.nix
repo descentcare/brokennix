@@ -51,7 +51,7 @@ in
 
     # Enable the KDE Plasma Desktop Environment.
     services.displayManager.sddm.enable = true;
-    services.xserver.desktopManager.plasma5.enable = true;
+    services.desktopManager.plasma6.enable = true;
 
     # Configure keymap in X11
     # Managed by PLASMA, so doesn't work
@@ -65,7 +65,7 @@ in
     services.printing.enable = true;
 
 # Enable sound with pipewire.
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
@@ -105,12 +105,16 @@ in
                 brave
                 btop
                 neofetch
-                nerdfonts
+                # nerdfonts
                 lazygit
                 zathura
+                tmux
     #  thunderbird
                 ];
     };
+    fonts.packages = with pkgs; [
+        nerd-fonts.caskaydia-mono
+    ];
 
     # Install firefox.
     programs.firefox = {

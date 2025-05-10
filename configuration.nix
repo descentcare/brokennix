@@ -57,7 +57,7 @@ in
     # Managed by PLASMA, so doesn't work
     services.xserver.xkb = {
         layout = "us, ru";
-        variant = "qwerty";
+        variant = "";
         options = "grp:ctrl_alt_toggle";
     };
 
@@ -65,7 +65,7 @@ in
     services.printing.enable = true;
 
 # Enable sound with pipewire.
-    services.pulseaudio.enable = false;
+    hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
@@ -105,16 +105,18 @@ in
                 brave
                 btop
                 neofetch
-                # nerdfonts
+                nerdfonts
                 lazygit
                 zathura
                 tmux
     #  thunderbird
                 ];
     };
+    /* for unstable
     fonts.packages = with pkgs; [
         nerd-fonts.caskaydia-mono
     ];
+    */
 
     # Install firefox.
     programs.firefox = {

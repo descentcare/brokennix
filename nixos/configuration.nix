@@ -19,7 +19,7 @@
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     # Enable networking
-        networking.networkmanager.enable = true;
+    networking.networkmanager.enable = true;
 
     # Set your time zone.
     time.timeZone = "Asia/Yekaterinburg";
@@ -46,6 +46,11 @@
     # Enable the KDE Plasma Desktop Environment.
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
+
+    programs.hyprland = {
+        enable = true;
+    };
+
 
     # Configure keymap in X11
     # Managed by PLASMA, so doesn't work
@@ -111,6 +116,11 @@
         vim
         xclip
         wayclip
+        wofi
+        waybar
+        dunst
+        swww
+        gimp
     ];
     environment.variables.EDITOR = "nvim";
 
@@ -128,6 +138,7 @@
     # Enable the OpenSSH daemon.
     # services.openssh.enable = true;
 
+    /* doesn't work with googlevideo.com so useless
     services.zapret = {
         enable = false;
         whitelist = [
@@ -156,6 +167,7 @@
             "--dpi-desync=disorder2"
         ];
     };
+    */
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];

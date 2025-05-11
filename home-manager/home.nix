@@ -31,6 +31,7 @@
         lazygit
         zathura
         tmux
+        waybar
     ];
 
     programs.git = {

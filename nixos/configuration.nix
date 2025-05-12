@@ -11,8 +11,8 @@
     boot.loader = {
         # systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;    
+        timeout = null;
         grub = {
-            timeout = null;
             enable = true;
             devices = [ "nodev" ];
             efiSupport = true;

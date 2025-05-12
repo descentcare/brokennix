@@ -121,6 +121,8 @@
         dunst
         swww
         gimp
+        eww
+        libnotify
     ];
     environment.variables.EDITOR = "nvim";
 

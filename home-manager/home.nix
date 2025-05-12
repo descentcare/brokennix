@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 
 {
     home.username = "tm";
     home.homeDirectory = "/home/tm";
 
     home.packages = with pkgs; [
+        openvpn
+        openvpn3
+        unrar-free
         viu
         mpv
         ranger
@@ -12,7 +15,6 @@
         iotop
         iftop
         unzip
-        neovim
         zig
         git
         ripgrep
@@ -31,8 +33,17 @@
         lazygit
         zathura
         tmux
-        waybar
+        # cargo
+        # rustc
     ];
+
+    programs.neovim = {
+        enable = true;
+        extraPackages = with pkgs; [
+            lua-language-server
+            nixd
+        ];
+    };
 
     programs.git = {
         enable = true;

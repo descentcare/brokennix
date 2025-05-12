@@ -35,6 +35,10 @@
         tmux
         # cargo
         # rustc
+
+        dotnet-sdk
+        dotnet-aspnetcore
+        dotnet-runtime
     ];
 
     programs.neovim = {
@@ -42,6 +46,7 @@
         extraPackages = with pkgs; [
             lua-language-server
             nixd
+            roslyn-ls
         ];
     };
 

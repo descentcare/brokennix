@@ -37,8 +37,6 @@
         # rustc
 
         dotnet-sdk
-        dotnet-aspnetcore
-        dotnet-runtime
     ];
 
     programs.neovim = {
